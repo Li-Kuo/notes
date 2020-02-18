@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <style media="screen">
+
+    </style>
+
+
+    <script type="text/babel">
+
+    function Validation(props){
+      let message;
+
+      if (props.length < 5){
+        message = "Text too short";
+      }else {
+        message = "Text long enough";
+      }
+
+      return (
+        <p>{message}</p>
+      );
+    }
+
+    function CharComponent(props){
+      let style1 = {
+        display: 'inline-block',
+        padding: '16px',
+        textAlign: 'center',
+        margin: '16px',
+        border: '1px solid black'
+      }
+
+      return (
+        <div style={style1} onClick={props.click}>{props.char}</div>
+      );
+    }
+
+    function App(){
+      const [inputState, setInputState] = useState(
+        {input: ""}
+      );
+
+      const lengthChangeHandler = (e)=>{
+        setInputState({input: e.target.value});
+      }
+
+      const deleteCharHandler = (index) => {
+        let chars = inputState.input.split("");
+
+        chars.splice(index, 1);
+
+        // join("") 把 array 組成 string
+        let text = chars.join("");
+
+        setInputState({input: text});
+      }
+                                        //split("") 拆解成array
+      const charList = inputState.input.split("").map(
+        (c, index) => {
+          return <CharComponent
+                  key={index}
+                  char={c}
+                  click={ ()=> deleteCharHandler(index)}
+                  />
+        }
+      );
+
+
+      return (
+        <div>
+          <input type="text" value={inputState.input} onChange={lengthChangeHandler} />
+
+          <Validation length={inputState.input.length} />
+
+          {charList}
+        </div>
+      );
+    }
+
+
+
+
+
+
+
+
+    window.addEventListener("load",()=>{
+      ReactDOM.render(<App />, document.body);
+    });
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

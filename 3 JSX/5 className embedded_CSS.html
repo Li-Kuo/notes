@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- ... -->
+    <style>
+      .head3{
+        font-weight: bold;
+        font-size: 30px;
+      }
+    </style>
+
+    <script type="text/babel">
+      class MyHead extends React.Component{
+        render(){
+                      //...
+          return <div className={"head" + this.props.level}>Hello World</div>;
+        }
+      }
+
+
+
+
+      window.addEventListener("load", ()=>{
+                                 //...
+        let component1 = <MyHead level="3" />;
+
+        ReactDOM.render(component1, document.body);
+
+      });
+
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <style media="screen">
+
+    </style>
+
+
+    <script type="text/babel">
+
+    function App(){
+      const [personState, setPersonState] = useState(
+        [{name: "Jack", age: 28}, {name: "Kayla", age: 20}, {name: "Samuel", age: 7}]
+      );
+
+      // 是否顯示
+      const [showPerson, setShowPerson] = useState(
+        {show: true}
+      );
+
+
+      //...
+      const togglePersonHandler = ()=>{
+        setShowPerson(
+          {show: !showPerson.show}
+        );
+      }
+
+
+      const personList = personState.map((person, index)=>{
+        return <Person name={person.name} age={person.age} />
+      });
+
+      //...
+      let persons;
+
+      if (showPerson.show === true){
+        persons = personList;
+      }else {
+        persons = null;
+      }
+
+
+
+
+
+
+
+      return (
+        <div>
+          //...
+          <button onClick={toggleHandler}></button>
+          //...
+          {persons}
+
+
+
+        </div>
+      );
+    }
+
+    function Person(props){
+
+      return (
+        <div>
+          <p>Im {props.name}, Im {props.age} yrs old</p>
+        </div>
+      );
+    }
+
+
+
+
+
+
+    window.addEventListener("load",()=>{
+      ReactDOM.render(<App />, document.body);
+    });
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

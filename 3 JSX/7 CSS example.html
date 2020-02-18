@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- ... -->
+    <style>
+      .head{
+        font-size: 50px;
+        font-weight: bold;
+      }
+    </style>
+
+    <script type="text/babel">
+    class MyHead extends React.Component{
+      render(){
+                    //...            //...
+        return <div className="head" style={{color: this.props.color}}>Hello World {this.props.end}</div>;
+      }
+    }
+
+    class MyHeadList extends React.Component{
+      render(){
+        return <div>
+                          //...
+          <MyHead end="." color="red" />
+          <MyHead end="!" color="blue" />
+          <MyHead end="?" color="green" />
+        </div>;
+      }
+    }
+
+
+
+
+    window.addEventListener("load", ()=>{
+      let list1 = <MyHeadList />;
+      ReactDOM.render(list1, document.body);
+    });
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

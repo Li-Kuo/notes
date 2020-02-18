@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <!-- https://unpkg.com/redux@4.0.5/dist/redux.js   下載 redux.js -->
+    <script src="redux.js"></script>
+
+
+    </script>
+
+    <script>
+      let action1 = {type: "UPDATE"};
+
+      let store;
+
+      let reducer1 = function(currentState, action){
+        // 一定要回傳 state
+        switch(action.type){
+          case "UPDATE":
+            return {on: !currentState.on};
+          default:
+            return currentState;
+        }
+      };
+
+      let handler1 = function(){
+        let newState = store.getState();
+
+        if (newState.on){
+          document.body.innerHTML = "on";
+        }else {
+          document.body.innerHTML = "off";
+        }
+      };
+
+
+
+      window.addEventListener("load", ()=>{
+                                 // 存入 reducer 和 state
+        store = Redux.createStore(reducer1, {on: true});
+
+        store.subscribe(handler1);
+
+        document.addEventListener("click", ()=>{
+          // 當使用者點擊時，派送 action1
+          store.dispatch(action1);
+
+
+        });
+
+
+      });
+
+    </script>
+  </head>
+  <body>
+    on
+
+  </body>
+</html>

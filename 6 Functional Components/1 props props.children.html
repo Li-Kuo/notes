@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style media="screen">
+
+    </style>
+
+
+    <script type="text/babel">
+    function App(){
+      return (
+        <div>
+          <Person name="Jack" age="28" />
+
+          <Person name="Kayla" age="20">
+           //這是 props.children
+            <ol>
+              <li>Smauel</li>
+              <li>Oh Yeah?</li>
+            </ol>
+          </Person>
+
+        </div>
+      );
+    }
+
+    function Person(props){
+      return (
+        <div>
+          <p>I am {props.name}, Im {props.age} yrs old</p>
+          <p>{props.children}</p>
+        </div>
+      );
+    }
+
+
+
+
+
+
+
+    window.addEventListener("load",()=>{
+      ReactDOM.render(<App />, document.body);
+    });
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

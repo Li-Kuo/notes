@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style media="screen">
+
+
+    </style>
+
+
+    <script type="text/babel">
+
+    function Person(props){
+      // 注意他的語法跟外部css不一樣
+      const style1 = {
+        width: '60%',
+        margin: '16px auto',
+        border: '1px solid grey',
+        boxShadow: '0 2px 3px black',
+        padding: '16px',
+        textAlign: 'center'
+      };
+
+      return (
+        //...
+        <div style={style1}>
+          <p>I am {props.name}, Im {props.age} yrs old</p>
+          <input type="text" value={props.name} onChange={props.change} />
+        </div>
+      );
+    }
+
+
+    function App(){
+
+      const [personState, setPersonState] = useState(
+        [{name: "Jack", age: 28},{ name: "Kayla", age: 20}]
+      );
+
+      const [petState, setPetState] = useState({name: "Samuel", age: 7});
+
+
+      const clickHandler = (name1, name2)=>{
+        setPersonState(
+          [{name: name1, age: 100},{ name: name2, age: 100}]
+        );
+      }
+
+
+      const nameChangeHandler = (e)=>{
+        setPersonState(
+
+          [{name: e.target.value, age: 100},{ name: name2, age: 100}]
+        );
+      }
+
+      return (
+
+        <div>
+                                                                      // step2
+          <Person name={personState[0].name} age={personState[0].age} change={nameChangeHandler} />
+
+          <Person name={personState[1].name} age={personState[1].age} />
+
+          <Person name={petState.name} age={petState.age} />
+        </div>
+      );
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    window.addEventListener("load",()=>{
+      ReactDOM.render(<App />, document.body);
+    });
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

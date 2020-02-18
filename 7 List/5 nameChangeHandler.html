@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <style media="screen">
+
+    </style>
+
+
+    <script type="text/babel">
+
+    function App(){
+      const [personState, setPersonState] = useState(
+        [{id: 1, name: "Jack", age: 28}, {id: 2, name: "Kayla", age: 20}, {id: 3, name: "Samuel", age: 7}]
+      );
+
+
+      const deletePersonHandler = (index)=>{
+        let persons = [...personState];
+        persons.splice(index,1);
+        setPersonState(persons);
+      }
+      // step3
+      const nameChangeHandler = (e, id)=>{
+        // persons 指向 複製的personState
+        let persons = [...personState];
+
+        // 找出 id 所在的 index
+        let index = personState.findIndex(
+          (p)=>{
+            p.id === id
+          }
+        );
+
+        // person 指向 persons[index]
+        let person = persons[index];
+
+        // 更改 person.name
+        person.name = e.target.value;
+
+        // setPersonState
+        setPersonState(persons);
+
+
+      }
+
+      const personList = personState.map((person, index)=>{
+        return <Person
+        key={person.id}
+        name={person.name}
+        age={person.age}
+        click={()=>deletePersonHandler(index)}
+        // step2 把 eventObject 和 person.id 傳入
+        change={(event)=>nameChangeHandler(event, person.id)}
+        />
+      }
+      );
+
+
+      return (
+        <div>
+
+          {personList}
+
+
+
+        </div>
+      );
+    }
+
+    function Person(props){
+
+      return (
+        <div>
+          <p onClick={props.click}>Im {props.name}, Im {props.age} yrs old</p>
+          // step1
+          <input type="text" value={props.name} onChange={props.change} />
+        </div>
+      );
+    }
+
+
+
+
+
+
+    window.addEventListener("load",()=>{
+      ReactDOM.render(<App />, document.body);
+    });
+
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

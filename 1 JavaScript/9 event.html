@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+
+      function init(){
+        // get button variable
+        let button1 = document.getElementById('btn1');
+
+        // make handler
+        let clickHandler = function() {
+          alert("Jack Lee");
+        }
+
+        // add event and handler to the button variable
+        button1.addEventListener("click", clickHandler);
+
+
+
+
+        // get span variable
+        let span1 = document.getElementById('span1');
+
+        // make handler
+        let overHandler = function() {
+          this.style.color = "red";
+        }
+
+        let outHandler = function() {
+          this.style.color = "black";
+        }
+
+        // add event and handler to span variable
+        span1.addEventListener("mouseover", overHandler);
+        span1.addEventListener("mouseout", outHandler);
+
+
+        // get div variable
+        let div1 = document.getElementById('div1');
+
+        // 已經有handler了
+
+        // add event and handler to the div varable
+        div1.addEventListener("mouseover", overHandler);
+        div1.addEventListener("mouseout", outHandler);
+
+      }
+
+
+
+    </script>
+  </head>
+  <body onload="init();">    <!--  load event發生   (網頁載入)   -->
+    <button id="btn1">Click</button>
+    <br><br><br>
+
+    <span id="span1">I am Lee. I am Kayla. I am Samuel.</span>
+
+    <br><br><br>
+
+    <div id="div1">12345789612235544122</div>
+
+
+
+  </body>
+</html>

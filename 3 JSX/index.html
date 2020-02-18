@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style media="screen">
+      .head{
+        font-size: 50px;
+        font-weight: bold;
+      }
+    </style>
+
+
+    <script type="text/babel">
+    class MyForm extends React.Component{
+      constructor(props){
+        super(props);
+
+        this.state = {select:"male"};
+      }
+
+
+      render(){
+        return <form onSubmit={this.submitHandler.bind(this)}>
+        <select value={this.state.select} onChange={this.selectHandler.bind(this)}>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <input type="submit" value="送出" />
+        </form>
+      }
+
+      submitHandler(e){
+        e.preventDefault();
+        console.log("表單送出");
+      }
+
+      selectHandler(e){
+        this.setState({select: e.currentTarget.value});
+      }
+    }
+
+
+
+
+
+
+
+    window.addEventListener("load",()=>{
+      let c1 = <MyForm />;
+      ReactDOM.render(c1, document.body);
+    });
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

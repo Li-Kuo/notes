@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>\
+    <script>
+
+      class MyHead extends React.Component{
+        render(){
+          return React.createElement("H" + this.props.level, null, "Hello World");
+        }
+      }
+
+      class MyHeadList extends React.Component{
+        // 建立 constructor
+        constructor(props){
+          super(props);     // 一定要 super(props);
+          this.state = {maxLevel:2};             // 設定 state
+        }
+
+
+
+        render(){
+          let heads = [];
+          let head;
+          // 使用 state
+          for (let i = 1; i <= this.state.maxLevel; i++){
+            head = React.createElement(MyHead, {level:i});
+            heads.push(head);
+          }
+          return React.createElement("Div", null, heads);
+        }
+
+
+      }
+
+      window.addEventListener("load",()=>{
+        let list1 = React.createElement(MyHeadList, null);
+        ReactDOM.render(list1, document.body);
+
+      });
+
+
+
+    </script>
+  </head>
+  <body>
+
+
+  </body>
+</html>

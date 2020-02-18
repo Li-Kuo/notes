@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+    // 到網站上使用http://aws.computerstudi.es/~gcc200414666/AJAX/
+      function getData(pageName){
+        // 建立連線物件
+        let req = new XMLHttpRequest();
+
+        // 設定連線內容
+        req.open("get", "http://aws.computerstudi.es/~gcc200414666/AJAX/" + pageName);
+
+        // 當連線成功時，顯示 responseText
+        req.onload = function(){
+          let div1 = document.getElementById('div1');
+          div1.innerHTML = this.responseText;
+        }
+
+        // 送出連線
+        req.send();
+      }
+
+
+    </script>
+  </head>
+  <body>
+    <span onclick="getData('sports.html');">Sports</span>
+    <br>
+    <span onclick="getData('animals.html');">Animals</span>
+    <br>
+
+    <div id="div1">
+
+    </div>
+
+  </body>
+</html>

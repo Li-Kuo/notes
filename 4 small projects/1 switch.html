@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
+    <style media="screen">
+      .switch-off{
+        width: 60px;
+        height: 30px;
+        /* 橢圓形 */
+        border-radius: 15px;
+        /* 淺灰色 */
+        background-color: #dddddd;
+      }
+      .switch-off>.btn{
+        width: 30px;
+        height: 30px;
+        /* 圓形 */
+        border-radius: 15px;
+        /* 灰色 */
+        background-color: #444444;
+      }
+
+      .switch-on{
+        width: 60px;
+        height: 30px;
+        border-radius: 15px;
+        /* 淺綠色 */
+        background-color: #ddffdd;
+      }
+      .switch-on>.btn{
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        /* 綠色 */
+        background-color: #448844;
+        /* 左邊空出30px */
+        margin-left: 30px;
+      }
+    </style>
+
+
+    <script type="text/babel">
+
+    // 基本邏輯:
+    //     this.state.on  =>  className  =>   改變 CSS
+    class Switch extends React.Component{
+      constructor(props){
+        super(props);
+
+        this.state = {on: false};
+      }
+      
+      render(){
+        let className;
+        if (this.state.on == true){
+          className = "switch-on"
+        }else {
+          className = "switch-off"
+        }
+
+        return <div className={className} onClick={this.clickHandler.bind(this)}>
+          <div className="btn"></div>
+        </div>;
+      }
+
+      clickHandler(){
+        this.setState((currentState, currentProps)=>({on: !currentState.on}));
+      }
+    }
+
+    window.addEventListener("load", ()=>{
+      ReactDOM.render(<Switch />, document.getElementById("switch1"));
+      ReactDOM.render(<Switch />, document.getElementById("switch2"));
+    });
+
+
+    </script>
+  </head>
+  <body>
+    <div id="switch1"></div>
+
+    <hr />
+
+    <div id="switch2">
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- ....... -->
+    <style>
+      .head{
+        font-weight: bold;
+        color: blue;
+        font-size: 50px;
+      }
+    </style>
+
+    <script type="text/babel">
+      class MyHead extends React.Component{
+        render(){
+                      //用className不要用class
+          return <div className="head">Hello World</div>;
+        }
+      }
+
+
+
+
+      window.addEventListener("load", ()=>{
+        let component1 = <MyHead />;
+        ReactDOM.render(component1, document.body);
+      });
+
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

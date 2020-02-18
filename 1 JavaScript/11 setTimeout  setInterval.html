@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      function init(){
+        let time1 = document.getElementById('time1');
+
+        let countdown = ()=>{
+          time1.innerHTML -= 1;
+        }
+
+        window.setTimeout(countdown, 1000);
+
+
+        let time2 = document.getElementById('time2');
+
+        let countdown2 = ()=>{
+          time2.innerHTML -= 1;
+        }
+
+        window.setInterval(countdown2, 1000);
+
+
+      }
+
+
+    </script>
+  </head>
+  <body onload="init();">
+    <span id="time1">3</span>
+
+    <br> <br> <br>
+
+    <span id="time2">3</span>
+
+
+
+  </body>
+</html>

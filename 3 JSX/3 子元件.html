@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      class MyHead extends React.Component{
+        render(){
+          return <div>Hello World {this.props.end}</div>;
+        }
+      }
+      // ............
+      class MyHeadList extends React.Component{
+        render(){
+          return <div>
+            <MyHead end="." />
+            <MyHead end="!" />
+            <MyHead end="?" />
+          </div>;
+        }
+      }
+
+
+
+
+      window.addEventListener("load", ()=>{
+        let list1 = <MyHeadList />;
+        ReactDOM.render(list1, document.body);
+      });
+
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <style media="screen">
+    .red {
+      color: red;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+
+    </style>
+
+
+    <script type="text/babel">
+
+    function App(){
+      const [personState, setPersonState] = useState(
+        [{id: 1, name: "Jack", age: 28}, {id: 2, name: "Kayla", age: 20}, {id: 3, name: "Samuel", age: 7}]
+      );
+
+
+      const [showPerson, setShowPerson] = useState(
+        {show: true}
+      );
+
+
+
+      const togglePersonHandler = ()=>{
+        setShowPerson(
+          {show: !showPerson.show}
+        );
+      }
+
+      const deletePersonHandler = (index)=>{
+
+        let persons = [...personState];
+
+
+        persons.splice(index, 1);
+
+
+        setPersonState(persons);
+
+      }
+
+      const nameChangeHandler = (e, id)=>{
+
+        let persons = [...personState];
+
+        let index = personState.findIndex(
+          (person) => { return person.id === id}
+        );
+
+        let person = persons[index]
+
+        person.name = e.target.value;
+
+
+        setPersonState(persons);
+      }
+
+
+      const personList = personState.map(
+        (person, index)=>{
+          return <Person
+          key={person.id}
+          name={person.name}
+          age={person.age}
+          click={()=>deletePersonHandler(index)}
+          change={(event)=>nameChangeHandler(event, person.id)}
+          />
+      }
+      );
+
+
+      let persons;
+
+      if (showPerson.show === true){
+        persons = personList;
+      }else {
+        persons = null;
+      }
+
+
+      let classes;
+
+      if (personState.length <= 2){
+        classes = "red";
+      }
+
+      if (personState.length <= 1){
+        classes = "red bold";
+      }
+
+      // step4
+      const StyledButton = styled.button`
+        background-color: ${props=>props.show ? 'red' : 'green'};
+        &:hover {
+          background-color: ${props=>props.show ? 'salmon' : 'lightgreen'}
+        };
+        color: white;
+        font: inherit;
+        border: 1px solid blue;
+        padding: 8px;
+        cursor: pointer;
+      `;
+
+
+      return (
+        <div className="App">
+
+          <p className={classes}>It really works!</p>
+          // step3      // props.show           // 可以使用 onClick
+          <StyledButton show={showPerson.show} onClick={toggleHandler}>
+            Toggle the list
+          </StyledButton>
+
+          {persons}
+
+
+
+        </div>
+      );
+    }
+
+    function Person(props){
+
+      // step1    製造 StyledDiv，使用 CSS 格式
+      const StyledDiv = styled.div`
+        width: 60%;
+        margin: 30px auto;
+        border: 1px solid grey;
+        box-shadow: 0 2px 3px black;
+        padding: 16px;
+        text-align: center;
+
+        @media (min-width: 500px) {
+            width: '400px'
+        }
+      `;
+
+      return (
+        // step2
+        <StyledDiv>
+          <p onClick={props.click}>Im {props.name}, Im {props.age} yrs old</p>
+          <input type="text" value={props.name} onChange={props.change} />
+        </StyledDiv>
+      );
+    }
+
+
+
+
+
+
+    window.addEventListener("load",()=>{
+      ReactDOM.render(<App />, document.body);
+    });
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

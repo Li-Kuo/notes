@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>\
+    <script>
+
+      class MyHead extends React.Component{
+        render(){
+          // 把屬性加上去
+          return React.createElement("H" + this.props.level, null, "Hello World");
+        }
+      }
+
+      window.addEventListener("load",()=>{
+        // 建立組件時，給定props
+        let component1 = React.createElement(MyHead, {level:3});
+        ReactDOM.render(component1, document.body);
+
+      });
+
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+
+      function init(){
+        let span1 = document.getElementById('span1');
+
+        // eventObject 包含了 event 的所有資訊
+        let clickHandler= function(eventObject){
+          alert(eventObject.clientX + ", " + eventObject.clientY);
+        }
+
+        span1.addEventListener("click", clickHandler);
+
+
+        // keydown 按下鍵盤的事件
+        document.addEventListener("keydown", function(e){
+          alert(e.key);
+        });
+
+
+      }
+
+
+
+    </script>
+  </head>
+  <body onload="init();">
+    
+    <br><br><br>
+
+    <span id="span1">I am Lee. I am Kayla. I am Samuel.</span>
+
+
+
+
+
+  </body>
+</html>

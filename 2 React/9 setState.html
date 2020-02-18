@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>\
+    <script>
+
+      class MyHead extends React.Component{
+        render(){
+          return React.createElement("H" + this.props.level, null, "Hello World");
+        }
+      }
+
+      class MyHeadList extends React.Component{
+
+        constructor(props){
+          super(props);
+
+          this.state = {maxLevel:2};
+
+          window.setTimeout(()=>{
+            // setState() 第二種用法
+            this.setState((currentState, currentProps)=>({maxLevel:currentState.maxLevel + currentProps.add}));
+          }, 2000);
+
+        }
+
+
+        // state改變 ，render()重跑
+        render(){
+          let heads = [];
+          let head;
+          for (let i = 1; i <= this.state.maxLevel; i++){
+            head = React.createElement(MyHead, {level:i});
+            heads.push(head);
+          }
+          return React.createElement("Div", null, heads);
+        }
+      }
+
+      window.addEventListener("load",()=>{
+        // 輸入props
+        let list1 = React.createElement(MyHeadList, {add:3});
+        ReactDOM.render(list1, document.body);
+
+      });
+
+
+
+    </script>
+  </head>
+  <body>
+
+
+  </body>
+</html>

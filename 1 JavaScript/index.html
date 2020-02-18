@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+
+    let player1 = {
+      "name": "Jack",
+      "age": 20,
+      "getInfo": function(){
+        return "Name: " + this.name + " Age: " + this.age;
+      },
+      "run": function(){
+        alert(this.name + " runs");
+      }
+    };
+
+    player1.run();
+    alert(player1.getInfo());
+
+
+
+    // JSON轉換成字串 (method不會被轉換)
+    let player1Str = JSON.stringify(player1);
+    alert(player1Str);
+
+
+
+    // 字串轉換成JSON
+    let str1 = "{\"name\":\"Samuel\", \"age\":7}";
+
+    let samuel = JSON.parse(str1);
+    console.log(samuel);
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </head>
+  <body>
+
+
+  </body>
+</html>

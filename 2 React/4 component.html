@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>\
+    <script>
+    // 建立一個 class 繼承 React.Component
+      class MyHead extends React.Component{
+        // 建立 render()
+        render(){
+          return React.createElement("H1", null, "Hello World");
+        }
+      }
+
+      window.addEventListener("load",()=>{
+
+        let component1 = React.createElement(MyHead,null);
+        ReactDOM.render(component1, document.body);
+        
+      });
+
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
